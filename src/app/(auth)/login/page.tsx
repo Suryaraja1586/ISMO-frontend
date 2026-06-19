@@ -172,7 +172,7 @@ export default function LoginPage() {
           {/* ── Brand ── */}
           <div className="flex justify-center pt-10 pb-2">
             <div className="flex items-center">
-              <Image src="/ismo.png" alt="ISMO Logo" width={550} height={550} className="h-24 w-auto object-contain rounded-xl shadow-lg shadow-indigo-600/40" priority />
+              <Image src="/ismo.png" alt="ISMO Logo" width={550} height={550} className="h-28 w-auto object-contain rounded-xl" priority />
             </div>
           </div>
 
@@ -228,78 +228,88 @@ export default function LoginPage() {
 
       {/* ══════════════════════════════════════════════════════════
           DESKTOP LAYOUT  (hidden below lg)
-          Pattern: left info panel | divider | right form panel
+          Pattern: Centered Card | Left info panel | Right form panel
       ══════════════════════════════════════════════════════════ */}
-      <div className="hidden lg:flex min-h-screen bg-slate-950 overflow-x-hidden">
+      <div className="hidden lg:flex min-h-screen bg-slate-950 items-center justify-center p-6">
 
-        {/* Left panel */}
-        <div className="lg:w-1/2 relative flex flex-col justify-between p-12 overflow-hidden">
-          <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-indigo-700/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -right-20 w-[400px] h-[400px] bg-violet-700/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: 'linear-gradient(#a5b4fc 1px,transparent 1px),linear-gradient(90deg,#a5b4fc 1px,transparent 1px)', backgroundSize: '40px 40px' }} />
+        {/* Main Card Container */}
+        <div className="flex w-full max-w-[1100px] min-h-[650px] bg-slate-900/40 rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-900/10 border border-slate-800/60 relative">
 
-          <div className="relative z-10 flex items-center mt-16">
-            <Image src="/ismo.png" alt="ISMO Logo" width={150} height={50} className="h-24 w-auto object-contain rounded-xl shadow-lg shadow-indigo-600/30" priority />
-          </div>
+          {/* Left panel (Info) */}
+          <div className="w-1/2 relative flex flex-col p-12 overflow-hidden bg-slate-900/60">
+            {/* Ambient Background */}
+            <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-indigo-700/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -right-20 w-[400px] h-[400px] bg-violet-700/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 opacity-[0.03]"
+              style={{ backgroundImage: 'linear-gradient(#a5b4fc 1px,transparent 1px),linear-gradient(90deg,#a5b4fc 1px,transparent 1px)', backgroundSize: '40px 40px' }} />
 
-          <div className="relative z-10 flex-1 flex flex-col justify-center py-16">
-            <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1.5 mb-6 w-fit">
-              <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-              <span className="text-xs font-semibold text-indigo-300 tracking-wide uppercase">Project Management</span>
+            {/* Header: Logo */}
+            <div className="relative z-10 flex items-center mb-10">
+              <Image src="/ismo.png" alt="ISMO Logo" width={150} height={50} className="h-12 w-auto object-contain drop-shadow-lg" priority />
             </div>
-            <h2 className="text-4xl xl:text-5xl font-extrabold leading-tight text-white mb-4">
-              Build, Track &amp;<br />
-              <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Deliver Faster</span>
-            </h2>
-            <p className="text-slate-400 text-base leading-relaxed max-w-sm mb-10">
-              ISMO gives your team the clarity and tools to ship projects on time — every time.
-            </p>
-            <div className="grid grid-cols-1 gap-4 max-w-sm">
-              {features.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex items-start gap-3 group">
-                  <div className="mt-0.5 p-2 rounded-lg bg-slate-800/80 border border-slate-700/60 group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 transition-all duration-200 shrink-0">
-                    <Icon className="w-4 h-4 text-indigo-400" />
+
+            {/* Content: Title & Desc */}
+            <div className="relative z-10 flex-1">
+              <h2 className="text-3xl xl:text-4xl font-extrabold leading-tight text-white mb-4">
+                Build, Track &amp; <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Deliver Faster</span>
+              </h2>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-10">
+                ISMO gives your team the clarity and tools to ship projects on time — every time.
+              </p>
+
+              {/* Features Grid (2 columns) */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-8">
+                {features.map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="flex flex-col gap-2 group">
+                    <div className="flex items-center gap-2">
+                      <Icon className="w-4 h-4 text-indigo-400" />
+                      <p className="text-sm font-semibold text-slate-200">{title}</p>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-200">{title}</p>
-                    <p className="text-xs text-slate-500 mt-0.5">{desc}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="relative z-10 flex items-center gap-2 mt-12 text-slate-500 text-xs font-mono">
+              <span>System Status: Operational</span>
+              <span>•</span>
+              <span>v2.4.0</span>
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center gap-2 text-slate-500 text-xs">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            <span>Trusted by 200+ teams worldwide</span>
-          </div>
-        </div>
+          {/* Right panel (Form) */}
+          <div className="w-1/2 flex flex-col relative bg-slate-950/80">
+            {/* Ambient Background */}
+            <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-700/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-700/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Divider */}
-        <div className="w-px bg-gradient-to-b from-transparent via-slate-700/50 to-transparent" />
+            <div className="flex-1 flex flex-col items-center justify-center p-12 relative z-10">
 
-        {/* Right form panel */}
-        <div className="flex-1 flex flex-col min-h-screen relative">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-700/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-700/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="flex-1 flex items-center justify-center px-8 relative z-10">
-            <div className="w-full max-w-md">
-              <div className="mb-7">
-                <h1 className="text-3xl font-extrabold text-white mb-1.5">Welcome back</h1>
-                <p className="text-slate-400 text-sm">Sign in to your account to continue.</p>
+              {/* Center Logo */}
+              <div className="mb-6">
+                <Image src="/ismo.png" alt="ISMO Logo Icon" width={64} height={64} className="h-14 w-auto object-contain drop-shadow-md" priority />
               </div>
 
-              {formBody(true, 'desktop')}
+              {/* Headings */}
+              <div className="text-center mb-8">
+                <h1 className="text-2xl font-extrabold text-white mb-2">Welcome back</h1>
+                <p className="text-slate-400 text-sm">Enter your credentials to access your account</p>
+              </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-800/60 text-center">
-                <p className="text-slate-400 text-sm">
-                  Don&apos;t have an account?{' '}
-                  <Link href="/register" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors underline decoration-indigo-400/30 underline-offset-4">
-                    Create an account
-                  </Link>
-                </p>
+              {/* Form Container */}
+              <div className="w-full max-w-sm">
+                {formBody(true, 'desktop')}
+
+                <div className="mt-8 text-center">
+                  <p className="text-slate-400 text-sm">
+                    Don&apos;t have an account?{' '}
+                    <Link href="/register" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
+                      Sign up
+                    </Link>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
