@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Mail, Lock, User as UserIcon, AlertCircle, ArrowRight, Briefcase } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, AlertCircle, ArrowRight, Briefcase, CheckCircle2 } from 'lucide-react';
 
 export default function RegisterPage() {
   const { register, loading, isAuthenticated } = useAuth();
@@ -55,141 +55,184 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 relative overflow-hidden px-4">
-      {/* Decorative Gradient Background Elements */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl"></div>
-
-      <div className="w-full max-w-md z-10">
-        {/* Brand */}
-        <div className="flex flex-col items-center mb-8 text-center">
-          <div className="bg-indigo-600 p-3.5 rounded-2xl shadow-xl shadow-indigo-600/20 mb-4 inline-flex">
-            <Briefcase className="w-8 h-8 text-white animate-pulse" />
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-slate-950">
+      
+      {/* Info Side - Hidden on Mobile */}
+      <div className="hidden lg:flex flex-col justify-center items-center p-12 bg-gradient-to-br from-slate-900 to-indigo-950/40 relative overflow-hidden border-r border-slate-800/60">
+        {/* Decorative Gradients */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl"></div>
+        
+        <div className="relative z-10 w-full max-w-lg">
+          <div className="flex items-center space-x-4 mb-12">
+            <div className="bg-indigo-600 p-3 rounded-2xl shadow-xl shadow-indigo-600/20">
+              <Briefcase className="w-8 h-8 text-white" />
+            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+              ISMO PMS
+            </h1>
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
-            Get Started
-          </h1>
-          <p className="text-slate-400 mt-2 text-sm max-w-xs">
-            Create an account to unlock your personalized project dashboard.
+
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-slate-100 to-indigo-200 bg-clip-text text-transparent leading-tight">
+            Start Building <br />With Us Today
+          </h2>
+          <p className="text-slate-400 text-lg mb-10 leading-relaxed">
+            Join thousands of teams who are already experiencing the next generation of project management.
           </p>
+          
+          <div className="space-y-5">
+            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
+              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
+              <span className="text-slate-200 font-medium">Create and manage unlimited projects</span>
+            </div>
+            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
+              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
+              <span className="text-slate-200 font-medium">Invite team members and collaborate</span>
+            </div>
+            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
+              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
+              <span className="text-slate-200 font-medium">Gain insights with detailed analytics</span>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Register Card */}
-        <div className="glass-panel rounded-3xl p-8 shadow-2xl relative border border-slate-800/80">
-          {error && (
-            <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-start space-x-3 text-rose-400 text-sm">
-              <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-              <span>{error}</span>
+      {/* Form Side */}
+      <div className="flex items-center justify-center p-6 sm:p-12 relative overflow-hidden">
+        {/* Mobile-only background decor */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-indigo-600/10 rounded-full blur-3xl lg:hidden"></div>
+        
+        <div className="w-full max-w-md z-10">
+          
+          {/* Mobile Brand (visible only on mobile) */}
+          <div className="flex flex-col items-center mb-10 text-center lg:hidden">
+            <div className="bg-indigo-600 p-3.5 rounded-2xl shadow-xl shadow-indigo-600/20 mb-4 inline-flex">
+              <Briefcase className="w-8 h-8 text-white" />
             </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Full Name Field */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Full Name
-              </label>
-              <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
-                  <UserIcon className="w-5 h-5" />
-                </span>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className={`w-full pl-11 pr-4 py-3 bg-slate-900/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
-                    ${formErrors.name ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
-                  `}
-                  placeholder="John Doe"
-                />
-              </div>
-              {formErrors.name && (
-                <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
-                  <span>{formErrors.name}</span>
-                </p>
-              )}
-            </div>
-
-            {/* Email Field */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Email Address
-              </label>
-              <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
-                  <Mail className="w-5 h-5" />
-                </span>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={`w-full pl-11 pr-4 py-3 bg-slate-900/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
-                    ${formErrors.email ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
-                  `}
-                  placeholder="name@example.com"
-                />
-              </div>
-              {formErrors.email && (
-                <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
-                  <span>{formErrors.email}</span>
-                </p>
-              )}
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
-                  <Lock className="w-5 h-5" />
-                </span>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={`w-full pl-11 pr-4 py-3 bg-slate-900/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
-                    ${formErrors.password ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
-                  `}
-                  placeholder="Min. 6 characters"
-                />
-              </div>
-              {formErrors.password && (
-                <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
-                  <span>{formErrors.password}</span>
-                </p>
-              )}
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/35 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
-            >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              ) : (
-                <>
-                  <span>Create Account</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* Bottom Link */}
-          <div className="mt-8 pt-6 border-t border-slate-800/60 text-center">
-            <p className="text-slate-400 text-sm">
-              Already have an account?{' '}
-              <Link
-                href="/login"
-                className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors underline decoration-indigo-400/30 underline-offset-4"
-              >
-                Sign In
-              </Link>
+            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+              ISMO PMS
+            </h1>
+            <p className="text-slate-400 mt-2 text-sm max-w-xs">
+              Create an account to unlock your personalized project dashboard.
             </p>
+          </div>
+
+          <div className="mb-8 hidden lg:block">
+            <h2 className="text-3xl font-bold text-slate-100">Create an account</h2>
+            <p className="text-slate-400 mt-2">Sign up to get started with ISMO PMS.</p>
+          </div>
+
+          <div className="glass-panel rounded-3xl p-8 shadow-2xl relative border border-slate-800/80 bg-slate-900/50 backdrop-blur-xl">
+            {error && (
+              <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-start space-x-3 text-rose-400 text-sm">
+                <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
+                    <UserIcon className="w-5 h-5" />
+                  </span>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className={`w-full pl-11 pr-4 py-3.5 bg-slate-950/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
+                      ${formErrors.name ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
+                    `}
+                    placeholder="John Doe"
+                  />
+                </div>
+                {formErrors.name && (
+                  <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
+                    <span>{formErrors.name}</span>
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
+                    <Mail className="w-5 h-5" />
+                  </span>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={`w-full pl-11 pr-4 py-3.5 bg-slate-950/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
+                      ${formErrors.email ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
+                    `}
+                    placeholder="name@example.com"
+                  />
+                </div>
+                {formErrors.email && (
+                  <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
+                    <span>{formErrors.email}</span>
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
+                    <Lock className="w-5 h-5" />
+                  </span>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={`w-full pl-11 pr-4 py-3.5 bg-slate-950/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
+                      ${formErrors.password ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
+                    `}
+                    placeholder="Min. 6 characters"
+                  />
+                </div>
+                {formErrors.password && (
+                  <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
+                    <span>{formErrors.password}</span>
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-3.5 px-4 mt-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/35 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  <>
+                    <span>Create Account</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </>
+                )}
+              </button>
+            </form>
+
+            <div className="mt-8 text-center">
+              <p className="text-slate-400 text-sm">
+                Already have an account?{' '}
+                <Link
+                  href="/login"
+                  className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors underline decoration-indigo-400/30 underline-offset-4"
+                >
+                  Sign In
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
