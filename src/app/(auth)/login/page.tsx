@@ -4,9 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-<<<<<<< HEAD
-import { Mail, Lock, AlertCircle, ArrowRight, Briefcase, CheckCircle2 } from 'lucide-react';
-=======
 import {
   Mail, Lock, AlertCircle, ArrowRight, Briefcase,
   Eye, EyeOff, CheckCircle2, BarChart3, Users, Zap, Shield,
@@ -28,7 +25,6 @@ function MobileFeatureChip({ icon: Icon, label }: { icon: React.ElementType; lab
     </div>
   );
 }
->>>>>>> 44e0aba568d4b6054d0df946ba31325fbdeb8407
 
 export default function LoginPage() {
   const { login, loading, isAuthenticated } = useAuth();
@@ -64,47 +60,6 @@ export default function LoginPage() {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-slate-950">
-      
-      {/* Info Side - Hidden on Mobile */}
-      <div className="hidden lg:flex flex-col justify-center items-center p-12 bg-gradient-to-br from-slate-900 to-indigo-950/40 relative overflow-hidden border-r border-slate-800/60">
-        {/* Decorative Gradients */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl"></div>
-        
-        <div className="relative z-10 w-full max-w-lg">
-          <div className="flex items-center space-x-4 mb-12">
-            <div className="bg-indigo-600 p-3 rounded-2xl shadow-xl shadow-indigo-600/20">
-              <Briefcase className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
-              ISMO PMS
-            </h1>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-slate-100 to-indigo-200 bg-clip-text text-transparent leading-tight">
-            Elevate Your <br />Project Workflow
-          </h2>
-          <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-            Experience the next generation of project management. Streamline tasks, collaborate seamlessly, and deliver exceptional results faster.
-          </p>
-          
-          <div className="space-y-5">
-            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
-              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
-              <span className="text-slate-200 font-medium">Real-time collaboration and dynamic updates</span>
-            </div>
-            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
-              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
-              <span className="text-slate-200 font-medium">Advanced analytics and comprehensive reporting</span>
-            </div>
-            <div className="flex items-center space-x-4 bg-slate-900/40 p-4 rounded-2xl border border-slate-800/60 backdrop-blur-sm">
-              <CheckCircle2 className="w-6 h-6 text-indigo-400 flex-shrink-0" />
-              <span className="text-slate-200 font-medium">Secure, role-based access control</span>
-            </div>
-          </div>
-=======
     <div className="min-h-screen flex bg-slate-950 overflow-x-hidden">
 
       {/* ════════════════════════════════════════════════════════
@@ -124,30 +79,8 @@ export default function LoginPage() {
             <Briefcase className="w-6 h-6 text-white" />
           </div>
           <span className="text-xl font-extrabold tracking-tight text-white">ISMO PM System</span>
->>>>>>> 44e0aba568d4b6054d0df946ba31325fbdeb8407
         </div>
-      </div>
 
-<<<<<<< HEAD
-      {/* Form Side */}
-      <div className="flex items-center justify-center p-6 sm:p-12 relative overflow-hidden">
-        {/* Mobile-only background decor */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-indigo-600/10 rounded-full blur-3xl lg:hidden"></div>
-        
-        <div className="w-full max-w-md z-10">
-          
-          {/* Mobile Brand (visible only on mobile) */}
-          <div className="flex flex-col items-center mb-10 text-center lg:hidden">
-            <div className="bg-indigo-600 p-3.5 rounded-2xl shadow-xl shadow-indigo-600/20 mb-4 inline-flex">
-              <Briefcase className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
-              ISMO PMS
-            </h1>
-            <p className="text-slate-400 mt-2 text-sm max-w-xs">
-              Sign in to manage your workspace
-            </p>
-=======
         {/* Hero */}
         <div className="relative z-10 flex-1 flex flex-col justify-center py-16">
           <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1.5 mb-6 w-fit">
@@ -330,109 +263,9 @@ export default function LoginPage() {
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
               <span>Trusted by 200+ teams worldwide</span>
             </div>
->>>>>>> 44e0aba568d4b6054d0df946ba31325fbdeb8407
-          </div>
-
-          <div className="mb-8 hidden lg:block">
-            <h2 className="text-3xl font-bold text-slate-100">Welcome back</h2>
-            <p className="text-slate-400 mt-2">Please enter your details to sign in.</p>
-          </div>
-
-          <div className="glass-panel rounded-3xl p-8 shadow-2xl relative border border-slate-800/80 bg-slate-900/50 backdrop-blur-xl">
-            {error && (
-              <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-start space-x-3 text-rose-400 text-sm">
-                <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                <span>{error}</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
-                    <Mail className="w-5 h-5" />
-                  </span>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={`w-full pl-11 pr-4 py-3.5 bg-slate-950/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
-                      ${formErrors.email ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
-                    `}
-                    placeholder="name@example.com"
-                  />
-                </div>
-                {formErrors.email && (
-                  <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
-                    <span>{formErrors.email}</span>
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Password
-                  </label>
-                  <Link href="#" className="text-xs text-indigo-400 hover:text-indigo-300 transition-colors">
-                    Forgot password?
-                  </Link>
-                </div>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
-                    <Lock className="w-5 h-5" />
-                  </span>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={`w-full pl-11 pr-4 py-3.5 bg-slate-950/50 border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-sm
-                      ${formErrors.password ? 'border-rose-500/50 focus:border-rose-500' : 'border-slate-800 focus:border-indigo-500'}
-                    `}
-                    placeholder="••••••••"
-                  />
-                </div>
-                {formErrors.password && (
-                  <p className="mt-1.5 text-xs text-rose-400 flex items-center space-x-1">
-                    <span>{formErrors.password}</span>
-                  </p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3.5 px-4 mt-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/35 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
-              >
-                {loading ? (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                ) : (
-                  <>
-                    <span>Sign In</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                  </>
-                )}
-              </button>
-            </form>
-
-            <div className="mt-8 text-center">
-              <p className="text-slate-400 text-sm">
-                Don't have an account?{' '}
-                <Link
-                  href="/register"
-                  className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors underline decoration-indigo-400/30 underline-offset-4"
-                >
-                  Create an account
-                </Link>
-              </p>
-            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
