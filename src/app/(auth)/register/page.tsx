@@ -221,7 +221,7 @@ export default function RegisterPage() {
           {/* ── Brand ── */}
           <div className="flex justify-center pt-10 pb-2">
             <div className="flex items-center">
-              <Image src="/ismo.png" alt="ISMO Logo" width={550} height={550} className="h-[250px] w-auto object-contain rounded-xl shadow-lg shadow-indigo-600/40" priority />
+              <Image src="/ismo.png" alt="ISMO Logo" width={550} height={550} className="h-24 w-auto object-contain rounded-xl shadow-lg shadow-indigo-600/40" priority />
             </div>
           </div>
 

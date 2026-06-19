@@ -239,7 +239,7 @@ export default function LoginPage() {
           <div className="absolute inset-0 opacity-[0.03]"
             style={{ backgroundImage: 'linear-gradient(#a5b4fc 1px,transparent 1px),linear-gradient(90deg,#a5b4fc 1px,transparent 1px)', backgroundSize: '40px 40px' }} />
 
-          <div className="relative z-10 flex items-center">
+          <div className="relative z-10 flex items-center mt-16">
             <Image src="/ismo.png" alt="ISMO Logo" width={150} height={50} className="h-24 w-auto object-contain rounded-xl shadow-lg shadow-indigo-600/30" priority />
           </div>
 
