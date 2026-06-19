@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   LayoutDashboard,
   Briefcase,
@@ -53,12 +54,9 @@ export default function DashboardLayout({
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-slate-950 text-slate-100">
       {/* Mobile Navbar */}
-      <header className="md:hidden flex items-center justify-between px-6 py-4 bg-slate-900 border-b border-slate-800">
-        <div className="flex items-center space-x-2">
-          <div className="bg-indigo-600 p-2 rounded-lg">
-            <Briefcase className="w-6 h-6 text-white" />
-          </div>
-          <span className="font-bold text-lg tracking-wider text-indigo-400">ISMO PM</span>
+      <header className="md:hidden flex items-center justify-between px-6 py-4 bg-slate-900 border-b border-slate-800/60">
+        <div className="flex items-center">
+          <Image src="/ismo.png" alt="ISMO Logo" width={150} height={50} className="h-12 w-auto object-contain" priority />
         </div>
         <button
           onClick={toggleSidebar}
@@ -83,14 +81,8 @@ export default function DashboardLayout({
       `}>
         <div>
           {/* Brand/Logo */}
-          <div className="hidden md:flex items-center space-x-3 px-6 py-6 border-b border-slate-800/60">
-            <div className="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-600/20">
-              <Briefcase className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <span className="font-extrabold text-xl tracking-wider bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">ISMO PM</span>
-              <p className="text-[10px] text-slate-500 font-semibold tracking-widest uppercase">Management</p>
-            </div>
+          <div className="hidden md:flex items-center justify-center px-6 py-6 border-b border-slate-800/60 w-full">
+            <Image src="/ismo.png" alt="ISMO Logo" width={180} height={60} className="h-16 w-auto object-contain" priority />
           </div>
 
           {/* User Info (Mobile Sidebar top) */}
